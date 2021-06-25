@@ -1,0 +1,106 @@
+.login-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+.example-full-width {
+  width: 100%;
+}
+
+
+.Todo{
+  background-color: #f3e9e9f5;
+  width: 100%;
+  height: 100%;
+  color: #ffffff;
+}
+
+.Todo mat-tab{
+  background: #eef7f3;
+  color: #eef7f3;
+}
+.example-small-box, .example-large-box, .example-large-box2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 16px;
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.example-small-box {
+  height: 100px;
+  width: 100px;
+}
+
+.example-large-box {
+  height: 200px;
+  width: 300px;
+}
+
+.example-large-box2 {
+  height: 700px;
+  width: 300px;
+}
+
+
+.example-button-row {
+  display: table-cell;
+  width: 490px;
+}
+
+.example-button-row .mat-button-base {
+  margin: 40px 8px 8px 0;
+}
+
+
+.prueba input, .prueba select {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #9285916c;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  color:#110909
+}
+.prueba label{
+  font-family: "Roboto", sans-serif;
+  border: 0;
+  margin: 0 0 0px;
+  float: left;
+  color: #110909;
+}
+
+.prueba {
+  position: relative;
+  z-index: 1;
+  background: #a464ad28;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.prueba button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #571d58bb;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #ffffff;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+.prueba button:hover,.prueba button:active,.form button:focus {
+  background: #320d33;
+}

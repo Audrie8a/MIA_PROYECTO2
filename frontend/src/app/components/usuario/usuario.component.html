@@ -1,1 +1,111 @@
-<p>usuario works!</p>
+<mat-tab-group mat-align-tabs="center" calss="Todo">
+  <mat-tab label="Perfil">
+  </mat-tab>
+  <mat-tab label="Amigos">
+
+    <mat-accordion>
+      <!--SECCIÓN DE AMIGOS AGREGADOS-->
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Amigos
+            </mat-panel-title>
+            <mat-panel-description>
+                Lista de Amigos Agregados
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-card  *ngFor="let amigo of Amigos">
+          <mat-card-header>
+            <mat-card-title>{{amigo.Usuario}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-actions>
+            <button mat-button>Eliminar</button>
+          </mat-card-actions>
+
+        </mat-card>
+
+      </mat-expansion-panel>
+
+      <!--SECCIÓN DE SUGERENCIAS-->
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Sugerencias
+            </mat-panel-title>
+            <mat-panel-description>
+                Personas que quiza conozcas
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-card  *ngFor="let amigo of Sugerencias">
+          <mat-card-header>
+            <mat-card-title>{{amigo.Usuario}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-actions>
+            <button mat-button>Agregar</button>
+          </mat-card-actions>
+
+        </mat-card>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+
+  </mat-tab>
+
+  <mat-tab label="Publicaciones">
+    <mat-accordion>
+      <!--SECCIÓN PARA PUBLICAR-->
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Publicar
+            </mat-panel-title>
+            <mat-panel-description>
+                Seccion para realizar Publicaciones
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <h1>CONTENIDO</h1>
+      </mat-expansion-panel>
+
+      <!--SECCIÓN DE PUBLICACIONES-->
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Publicaciones
+            </mat-panel-title>
+            <mat-panel-description>
+                Seccion para ver las Publicaciones
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-card  *ngFor="let publi of Publicaciones">
+          <mat-card-header>
+            <mat-card-title>{{publi.Usuario}}</mat-card-title>
+            <mat-card-subtitle>{{publi.Fecha}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              {{publi.Texto}}
+              {{publi.Tags}}
+            </p>
+          </mat-card-content>
+          <img mat-card-image src={{publi.Imagen}}>
+
+          <mat-card-actions>
+            <button mat-button>LIKE</button>
+            <button mat-button>SHARE</button>
+          </mat-card-actions>
+
+        </mat-card>
+
+
+
+
+      </mat-expansion-panel>
+
+    </mat-accordion>
+  </mat-tab>
+  <mat-tab label="Chat">
+  </mat-tab>
+</mat-tab-group>

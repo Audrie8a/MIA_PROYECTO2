@@ -11,9 +11,15 @@
     <mat-tab label="Registrar" >
 
         <form class="prueba">
+            <label> Usuario</label>
             <input [(ngModel)]="Usr" name= "Usr" placeholder="Usuario" type="text" class="form-control">
+            <label> Nombre</label>
             <input [(ngModel)]="Nombre" name= "Nombre" placeholder="Name" type="text" class="form-control">
+            <label> Contraseña</label>
             <input [(ngModel)]="Pass" name= "Pass" placeholder="Password" type="text" class="form-control">
+            <label> Repetir Contraseña</label>
+            <input [(ngModel)]="Pass2" name= "Pass2" placeholder="Repetir Password" type="text" class="form-control">
+            <label> Foto</label>
             <input type="file" [(ngModel)]="Foto" name="Foto" accept="image/jpg, image/jpeg, image/png">
 
             <button (click)='Registrar()'>Registrar</button>

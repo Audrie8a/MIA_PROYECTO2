@@ -13,7 +13,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path:'Inicio/:id',
+    path:'User/:id',
     component: UsuarioComponent
   }
 ];

@@ -6,7 +6,7 @@
   .example-full-width {
     width: 100%;
   }
-  
+
 
   .Todo{
     background-color: #f3e9e9f5;
@@ -14,7 +14,7 @@
     height: 100%;
     color: #ffffff;
   }
-  
+
   .Todo mat-tab{
     background: #eef7f3;
     color: #eef7f3;
@@ -28,33 +28,33 @@
     border-radius: 8px;
     text-align: center;
   }
-    
+
   .example-small-box {
     height: 100px;
     width: 100px;
   }
-  
+
   .example-large-box {
     height: 200px;
     width: 300px;
   }
-  
+
   .example-large-box2 {
     height: 700px;
     width: 300px;
   }
-  
-  
+
+
   .example-button-row {
     display: table-cell;
     width: 490px;
   }
-  
+
   .example-button-row .mat-button-base {
     margin: 40px 8px 8px 0;
   }
-  
-  
+
+
   .prueba input, .prueba select {
     font-family: "Roboto", sans-serif;
     outline: 0;
@@ -72,8 +72,9 @@
     border: 0;
     margin: 0 0 0px;
     float: left;
+    color: #110909;
   }
-  
+
   .prueba {
     position: relative;
     z-index: 1;
@@ -84,7 +85,7 @@
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   }
-  
+
   .prueba button {
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
@@ -99,7 +100,7 @@
     transition: all 0.3 ease;
     cursor: pointer;
   }
-  
+
   .prueba button:hover,.prueba button:active,.form button:focus {
     background: #320d33;
   }

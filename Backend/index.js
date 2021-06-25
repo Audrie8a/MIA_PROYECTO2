@@ -1,5 +1,5 @@
-const usuariosRouter = require('./routes/usuarios.routes');
-//const goodActionsRouter=require('./routes/buenasAcciones.routes');
+const InicioRouter = require('./routes/inicio.routes');
+const usuariosRouter=require('./routes/usuarios.routes');
 
 var express = require('express');
 const morgan=require('morgan');
@@ -19,8 +19,8 @@ app.get('/', function(req,res){
 res.send("Bienvenido!")
 });
 
-app.use("/",usuariosRouter)
-//app.use("/chicos",goodActionsRouter)
+app.use("/",InicioRouter)
+app.use("/User",usuariosRouter)
 
 app.listen(port, function () {
   console.log('Listening on port',port);

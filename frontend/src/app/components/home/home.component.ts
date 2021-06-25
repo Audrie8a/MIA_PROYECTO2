@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   Nombre: string = '';
   Pass: string = '';
   Foto: string = '';
-
+  Pass2: string ='';
 
 
   buttonDisabled: boolean = false;
@@ -49,20 +49,25 @@ export class HomeComponent implements OnInit {
     } else {
       this.borrarRegistro();
       alert(respuesta);
-      this.linkRouter = '/Inicio';
+      this.linkRouter = '/User';
       this._router.navigate([this.linkRouter, respuesta]);
     }
   }
 
   async Registrar() {
-    if (this.Nombre != '' && this.Pass != '' && this.Usr != '') {
-      let respuesta = await this.homeService.Registro(this.Nombre, this.Usr, this.Pass, this.Foto);
-      if (respuesta == 'true') {
-        alert("Usuario creado existosamente!");
-        this.borrarRegistro();
-      } else {
-        alert("Error al crear el usuario!");
-        this.borrarRegistro();
+    if (this.Nombre != '' && this.Pass != '' && this.Pass2!='' && this.Usr != '') {
+      if(this.Pass==this.Pass2){
+        let respuesta = await this.homeService.Registro(this.Nombre, this.Usr, this.Pass, this.Foto);
+        if (respuesta == 'true') {
+          alert("Usuario creado existosamente!");
+          this.borrarRegistro();
+        } else {
+          alert("Error al crear el usuario!");
+          this.borrarRegistro();
+        }
+      }
+      else{
+          alert("Error, las contraseñas no coinciden!");
       }
     } else {
       alert("Por favor llenar todos los campos!");
@@ -77,6 +82,7 @@ export class HomeComponent implements OnInit {
     this.Usr = '';
     this.Nombre = '';
     this.Pass = '';
+    this.Pass2='';
     this.Foto = '';
   }
 }

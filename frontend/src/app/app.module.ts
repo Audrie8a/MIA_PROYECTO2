@@ -15,7 +15,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { FormsModule } from '@angular/forms';
-
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,8 @@ import { FormsModule } from '@angular/forms';
     MatSelectModule,
     MatButtonModule,
     MatExpansionModule,
-    FormsModule
+    FormsModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
