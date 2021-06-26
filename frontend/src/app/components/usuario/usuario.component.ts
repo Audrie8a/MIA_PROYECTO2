@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { MatDialog,MatDialogConfig } from '@angular/material/dialog';
+import { UpdateUserComponent } from '../update-user/update-user.component';
 
 @Component({
   selector: 'app-usuario',
@@ -18,7 +20,8 @@ export class UsuarioComponent implements OnInit {
 
   constructor(public usuarioService:UsuarioService,
     public _routre:Router,
-    public route: ActivatedRoute ) { }
+    public route: ActivatedRoute,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
     let usuario=this.route.snapshot.paramMap.get("id");
@@ -55,6 +58,14 @@ export class UsuarioComponent implements OnInit {
     }else{
       this.myImg+="NoFoto.jpg";
     }
+  }
+
+  onEdit(){
+    const dialogConfig= new MatDialogConfig();
+    //dialogConfig.disableClose=true;
+    dialogConfig.autoFocus=true;
+    dialogConfig.width="60%";
+    this.dialog.open(UpdateUserComponent,dialogConfig);
   }
 
 }

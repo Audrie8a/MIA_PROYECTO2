@@ -16,12 +16,15 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { FormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
+import {MatDialogModule} from '@angular/material/dialog';
+import { UpdateUserComponent } from './components/update-user/update-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule,
@@ -36,9 +39,11 @@ import {MatCardModule} from '@angular/material/card';
     MatButtonModule,
     MatExpansionModule,
     FormsModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[UpdateUserComponent]
 })
 export class AppModule { }
