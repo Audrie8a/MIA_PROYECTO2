@@ -267,3 +267,40 @@ exports.getDatosUsuario = async (req, res) => {
         res.json("error")
     }
 }
+
+exports.updateDatosUsuario = async (req, res) => {
+    try {        
+        const { Usuario,Nombre,Passwords,Foto} = req.body
+
+        //Lista Amigos Que les envió solicitud de amistad
+        let sql = `update Usuario set Nombre='${Nombre}', Passwords='${Passwords}.', Foto='${Foto}' 
+        where Usuario='${Usuario}'`;
+        
+        let result = await BD.Open(sql, [], true);
+        
+        let Dato = {
+            "Nombre":"",
+            "Usuario":"",
+            "Passwords":"",
+            "Foto":""
+        }
+
+        
+        result.rows.map( user=>{
+            Dato = {
+                "Nombre": user[1],
+                "Usuario":user[2],
+                "Passwords":user[3],
+                "Foto":user[4]
+            }
+        });
+        
+        //FALTA DESENCRIPTAR LA CONTRASEÑA
+
+       res.json(Dato);
+    }
+    catch (error) {
+        console.log("Error al obtener Publicaciones  => ", error)
+        res.json("error")
+    }
+}

@@ -1,6 +1,7 @@
 <mat-tab-group mat-align-tabs="center" calss="Todo">
   <mat-tab label="Perfil">
 
+    <img [src]="myImg" style="width: 350px; height: 350px; " >
     <table id="acciones">
       <thead>
           <th>Nombre</th>
@@ -117,8 +118,7 @@
               {{publi.Tags}}
             </p>
           </mat-card-content>
-          <img mat-card-image src={{publi.Imagen}}>
-
+          <img mat-card-image src="http://localhost:3000/{{publi.Imagen}}" style="width: 350px; height: 350px; " >
           <mat-card-actions>
             <button mat-button>LIKE</button>
             <button mat-button>SHARE</button>

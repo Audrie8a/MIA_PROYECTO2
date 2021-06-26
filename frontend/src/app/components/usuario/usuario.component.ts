@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
+
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',
@@ -12,6 +13,8 @@ export class UsuarioComponent implements OnInit {
   Amigos: any;
   Sugerencias: any;
   DatosUsuario: any;
+
+  myImg="http://localhost:3000/";
 
   constructor(public usuarioService:UsuarioService,
     public _routre:Router,
@@ -47,7 +50,11 @@ export class UsuarioComponent implements OnInit {
   }
   async getDatosUsuario(Usuario: string | null){
     this.DatosUsuario= await this.usuarioService.getDatosUsuario(Usuario);
-    alert(this.DatosUsuario.Nombre);
+    if(this.DatosUsuario.Foto!=null){
+    this.myImg+=this.DatosUsuario.Foto;
+    }else{
+      this.myImg+="NoFoto.jpg";
+    }
   }
 
 }

@@ -2,10 +2,12 @@ const InicioRouter = require('./routes/inicio.routes');
 const usuariosRouter=require('./routes/usuarios.routes');
 const Img = require('./routes/imagen.routes');
 
+
 var express = require('express');
 const ejs=require('ejs');
 const morgan=require('morgan');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 var app = express();
 const cors = require('cors');
@@ -25,6 +27,8 @@ res.send("Bienvenido!")
 app.use("/",InicioRouter)
 app.use("/User",usuariosRouter)
 app.use("/Img",Img);
+
+app.use(express.static('Public'));
 
 
 

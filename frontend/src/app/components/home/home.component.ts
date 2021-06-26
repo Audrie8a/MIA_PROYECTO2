@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit {
   async Registrar() {
     if (this.Nombre != '' && this.Pass != '' && this.Pass2!='' && this.Usr != '') {
       if(this.Pass==this.Pass2){
-        let respuesta = await this.homeService.Registro(this.Nombre, this.Usr, this.Pass, this.Foto);
+        let respuesta = await this.homeService.Registro(this.Nombre, this.Usr, this.Pass, this.Foto.substr(12,this.Foto.length));
         if (respuesta == 'true') {
           this.onFileUpload();
           alert("Usuario creado existosamente!");
