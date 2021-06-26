@@ -26,4 +26,10 @@ export class UsuarioService {
     const data = {Usuario};
     return this.httpClient.post(ruta,data).toPromise();
   }
+
+  getDatosUsuario (Usuario:string | null){
+    const ruta = this.url+"Datos";
+    const data = {Usuario};
+    return this.httpClient.post(ruta,data).toPromise();
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ElementRef,ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HomeService } from 'src/app/services/home.service';
 
@@ -8,6 +8,8 @@ import { HomeService } from 'src/app/services/home.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+  @ViewChild('fileInput',{static:false}) fileInput!: ElementRef;
 
   constructor(public homeService: HomeService,
     public _activatedRoute: ActivatedRoute,
@@ -59,6 +61,7 @@ export class HomeComponent implements OnInit {
       if(this.Pass==this.Pass2){
         let respuesta = await this.homeService.Registro(this.Nombre, this.Usr, this.Pass, this.Foto);
         if (respuesta == 'true') {
+          this.onFileUpload();
           alert("Usuario creado existosamente!");
           this.borrarRegistro();
         } else {
@@ -73,6 +76,15 @@ export class HomeComponent implements OnInit {
       alert("Por favor llenar todos los campos!");
 
     }
+  }
+
+  onFileUpload(){
+    alert("Subiendo Imagen!");
+    const imageBlob = this.fileInput.nativeElement.files[0];
+    alert(imageBlob);
+    const file = new FormData();
+    file.set('file', imageBlob);
+    this.homeService.saveImagen(file);
   }
 
 

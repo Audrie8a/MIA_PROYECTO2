@@ -9,9 +9,10 @@
         {
             "type": "pwa-chrome",
             "request": "launch",
+            //"preLaunchTask": "npm run dev",
             "name": "Launch Chrome against localhost",
             "url": "http://localhost:4200",
-            "webRoot": "${workspaceFolder}/Home"
+            "webRoot": "${workspaceFolder}/frontend"
         }
     ]
 }

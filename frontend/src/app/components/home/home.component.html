@@ -20,7 +20,7 @@
             <label> Repetir Contraseña</label>
             <input [(ngModel)]="Pass2" name= "Pass2" placeholder="Repetir Password" type="text" class="form-control">
             <label> Foto</label>
-            <input type="file" [(ngModel)]="Foto" name="Foto" accept="image/jpg, image/jpeg, image/png">
+            <input #fileInput type="file" [(ngModel)]="Foto"   name="Foto" >
 
             <button (click)='Registrar()'>Registrar</button>
         </form>

@@ -24,4 +24,10 @@ export class HomeService {
 
   }
 
+  saveImagen(file: FormData){
+    const ruta=this.url+"Img/upload";
+    return this.httpClient.post(ruta,file).subscribe(response =>{
+      alert(response);
+    });
+  }
 }

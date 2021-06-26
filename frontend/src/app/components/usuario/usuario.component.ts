@@ -11,6 +11,7 @@ export class UsuarioComponent implements OnInit {
   Publicaciones: any;
   Amigos: any;
   Sugerencias: any;
+  DatosUsuario: any;
 
   constructor(public usuarioService:UsuarioService,
     public _routre:Router,
@@ -26,6 +27,7 @@ export class UsuarioComponent implements OnInit {
       this.getPublicaciones(usuario);
       this.getAmigos(usuario);
       this.getSugerencias(usuario);
+      this.getDatosUsuario(usuario);
     }
   }
 
@@ -42,6 +44,10 @@ export class UsuarioComponent implements OnInit {
   async getSugerencias(Usuario: string | null){
     this.Sugerencias= await this.usuarioService.getSugerencias(Usuario);
     //alert(this.Amigos);
+  }
+  async getDatosUsuario(Usuario: string | null){
+    this.DatosUsuario= await this.usuarioService.getDatosUsuario(Usuario);
+    alert(this.DatosUsuario.Nombre);
   }
 
 }

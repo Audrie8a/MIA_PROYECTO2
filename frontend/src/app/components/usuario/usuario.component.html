@@ -1,5 +1,32 @@
 <mat-tab-group mat-align-tabs="center" calss="Todo">
   <mat-tab label="Perfil">
+
+    <table id="acciones">
+      <thead>
+          <th>Nombre</th>
+          <th>Usuario</th>
+          <th>Contraseña</th>
+
+      </thead>
+      <tbody>
+          <tr>
+              <td>
+                  {{DatosUsuario.Nombre}}
+              </td>
+              <td>
+                  {{DatosUsuario.Usuario}}
+              </td>
+              <td>
+                  {{DatosUsuario.Passwords}}
+              </td>
+
+              <td><button class="btn">Editar</button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+
+
   </mat-tab>
   <mat-tab label="Amigos">
 

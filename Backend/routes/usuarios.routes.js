@@ -7,4 +7,6 @@ router.post("/Publicaciones",usuariosController.getPublicaciones);
 router.post("/Amigos",usuariosController.getAmigos);
 router.post("/Sugerencias",usuariosController.getSugerencias);
 router.post("/Datos",usuariosController.getDatosUsuario);
+
+
 module.exports = router
