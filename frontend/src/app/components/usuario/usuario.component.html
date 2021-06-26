@@ -71,7 +71,7 @@
             <mat-card-title>{{amigo.Usuario}}</mat-card-title>
           </mat-card-header>
           <mat-card-actions>
-            <button mat-button>Agregar</button>
+            <button mat-button (click)="AgregarAmigo(amigo.Usuario)">Agregar</button>
           </mat-card-actions>
 
         </mat-card>

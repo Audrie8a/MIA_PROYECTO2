@@ -286,3 +286,40 @@ exports.updateDatosUsuario = async (req, res) => {
         res.json("error")
     }
 }
+
+exports.eliminarAmigo = async (req, res) => {
+    try {        
+        const { Usuario,Amigs} = req.body
+
+        //Lista Amigos Que les envió solicitud de amistad
+        let sql = `delete from SolicitudAmistad where (SolicitudAmistad.usuarioa='${Usuario}' and SolicitudAmistad.usuariob='${Amigs}') 
+        or (solicitudamistad.usuariob='${Usuario}' and solicitudamistad.usuarioa='${Amigs}')`;
+
+        let result = await BD.Open(sql, [], true);
+
+        console.log("Amigo Eliminado!");
+        res.json("true");
+    }
+    catch (error) {
+        console.log("Error al eliminar Amigo  => ", error)
+        res.json("error")
+    }
+}
+
+exports.agregarAmigo = async (req, res) => {
+    try {        
+        const { UsuarioA,UsuarioB} = req.body
+
+        //Lista Amigos Que les envió solicitud de amistad
+        let sql = `insert into SolicitudAmistad (UsuarioA, UsuarioB, Fecha, id_EstadoAmistad) values('${UsuarioA}','${UsuarioB}',(select current_date from dual),1)`;
+        console.log(sql);
+        let result = await BD.Open(sql, [], true);
+
+        console.log("Amigo Agregado!");
+        res.json("true");
+    }
+    catch (error) {
+        console.log("Error al eliminar Amigo  => ", error)
+        res.json("error")
+    }
+}

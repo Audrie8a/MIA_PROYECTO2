@@ -68,4 +68,8 @@ export class UsuarioComponent implements OnInit {
     this.dialog.open(UpdateUserComponent,dialogConfig);
   }
 
+  AgregarAmigo(Usuario: string){
+    console.log(Usuario);
+  }
+
 }
