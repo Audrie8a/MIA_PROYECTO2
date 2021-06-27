@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ElementRef,ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { MatDialog,MatDialogConfig } from '@angular/material/dialog';
@@ -11,10 +11,20 @@ import { UpdateUserComponent } from '../update-user/update-user.component';
 })
 export class UsuarioComponent implements OnInit {
 
+  @ViewChild('fileInput',{static:false}) fileInput!: ElementRef;
+
+  Usr: string | null="";
   Publicaciones: any;
   Amigos: any;
   Sugerencias: any;
   DatosUsuario: any;
+
+  //Publicacion
+  txtTag:string ='';
+  txtPublicacion: string = '';
+  ImagenP: string = '';
+  lstTags=[''];
+  Tags='';
 
   myImg="http://localhost:3000/";
 
@@ -25,6 +35,7 @@ export class UsuarioComponent implements OnInit {
 
   ngOnInit(): void {
     let usuario=this.route.snapshot.paramMap.get("id");
+    this.Usr=usuario;
     this.Inicio(usuario)
   }
 
@@ -60,6 +71,65 @@ export class UsuarioComponent implements OnInit {
     }
   }
 
+  async EliminarAmigo(Usuario: string){
+    let respuesta = await this.usuarioService.eliminarAmigo(this.Usr,Usuario);
+    if(respuesta=="true"){
+      this.ngOnInit();
+      alert("Amigo eliminado!");
+    }else{
+      alert("Error al eliminar amigo!");
+    }
+  }
+  async AgregarAmigo(Usuario: string){
+    let respuesta = await this.usuarioService.agregarAmigo(this.Usr,Usuario);
+    if(respuesta=="true"){
+      this.ngOnInit();
+      alert("Amigo añadido!");
+    }else{
+      alert("Error al añadir amigo!");
+    }
+  }
+
+  async crearPublicacion(){
+    if(this.ImagenP!=''){
+      let respuesta=await this.usuarioService.crearPublicacion(this.Usr,this.txtPublicacion, this.ImagenP.substr(12,this.ImagenP.length),this.Tags );
+      if(respuesta=="true"){
+        this.onFileUpload();
+        this.ngOnInit();
+        alert("Publicado!");
+      }else{
+        alert("Error al Publicar!");
+      }
+    }else{
+      alert("Se necesita una imagen para publicar!");
+    }
+  }
+
+  addTag(){
+    if(this.txtTag!=''){
+      if(this.txtTag[0]=='#'){
+        this.lstTags.push(this.txtTag);
+        this.Tags+=this.txtTag+"**";
+        alert("Tag Agregado!");
+        this.txtTag="";
+      }else{
+        alert("Error, se necesita iniciar con un #");
+      }
+
+    }else{
+      alert('No se puede agregar un tag vacío!');
+    }
+  }
+
+  onFileUpload(){
+    const imageBlob = this.fileInput.nativeElement.files[0];
+    alert(imageBlob);
+    const file = new FormData();
+    file.set('file', imageBlob);
+    this.usuarioService.saveImagen(file);
+  }
+
+
   onEdit(){
     const dialogConfig= new MatDialogConfig();
     //dialogConfig.disableClose=true;
@@ -68,8 +138,6 @@ export class UsuarioComponent implements OnInit {
     this.dialog.open(UpdateUserComponent,dialogConfig);
   }
 
-  AgregarAmigo(Usuario: string){
-    console.log(Usuario);
-  }
+
 
 }

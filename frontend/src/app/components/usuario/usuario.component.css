@@ -55,6 +55,19 @@
 }
 
 
+.txtA{
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #9285916c;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  color:#110909
+}
+
 .prueba input, .prueba select {
   font-family: "Roboto", sans-serif;
   outline: 0;
@@ -103,4 +116,8 @@
 
 .prueba button:hover,.prueba button:active,.form button:focus {
   background: #320d33;
+}
+
+mat-form-field {
+  margin-right: 12px;
 }

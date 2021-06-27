@@ -32,4 +32,31 @@ export class UsuarioService {
     const data = {Usuario};
     return this.httpClient.post(ruta,data).toPromise();
   }
+
+  eliminarAmigo(Usuario:string | null, Amigs: string){
+    const ruta = this.url+"Eliminar";
+    const data = {Usuario, Amigs};
+    return this.httpClient.post(ruta, data).toPromise();
+
+  }
+
+  agregarAmigo(UsuarioA:string | null, UsuarioB: string){
+    const ruta = this.url+"Agregar";
+    const data = {UsuarioA, UsuarioB};
+    return this.httpClient.post(ruta, data).toPromise();
+
+  }
+
+  crearPublicacion(Usuario: string | null, Texto:string, Imagen:string, Tags:string){
+    const ruta= this.url+"Publicar";
+    const data={Usuario, Texto, Imagen, Tags};
+    return this.httpClient.post(ruta,data).toPromise();
+  }
+
+  saveImagen(file: FormData){
+    const ruta="http://localhost:3000/Img/upload";
+    return this.httpClient.post(ruta,file).subscribe(response =>{
+      alert(response);
+    });
+  }
 }

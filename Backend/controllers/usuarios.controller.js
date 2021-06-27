@@ -160,7 +160,7 @@ exports.getAmigos = async (req, res) => {
        res.json(Amigos);
     }
     catch (error) {
-        console.log("Error al obtener Publicaciones  => ", error)
+        console.log("Error al obtener Amigos  => ", error)
         res.json("error")
     }
 }
@@ -223,13 +223,13 @@ exports.getSugerencias = async (req, res) => {
         });
         
        res.json(lstAmigos);
+       
     }
     catch (error) {
-        console.log("Error al obtener Publicaciones  => ", error)
+        console.log("Error al obtener Sugerencias!  => ", error)
         res.json("error")
     }
 }
-
 
 exports.getDatosUsuario = async (req, res) => {
     try {        
@@ -263,7 +263,7 @@ exports.getDatosUsuario = async (req, res) => {
        res.json(Dato);
     }
     catch (error) {
-        console.log("Error al obtener Publicaciones  => ", error)
+        console.log("Error al obtener Datos del Usuario  => ", error)
         res.json("error")
     }
 }
@@ -282,7 +282,7 @@ exports.updateDatosUsuario = async (req, res) => {
         res.json("true");
     }
     catch (error) {
-        console.log("Error al obtener Publicaciones  => ", error)
+        console.log("Error al actualizar Datos  => ", error)
         res.json("error")
     }
 }
@@ -312,14 +312,40 @@ exports.agregarAmigo = async (req, res) => {
 
         //Lista Amigos Que les envió solicitud de amistad
         let sql = `insert into SolicitudAmistad (UsuarioA, UsuarioB, Fecha, id_EstadoAmistad) values('${UsuarioA}','${UsuarioB}',(select current_date from dual),1)`;
-        console.log(sql);
         let result = await BD.Open(sql, [], true);
 
         console.log("Amigo Agregado!");
         res.json("true");
     }
     catch (error) {
-        console.log("Error al eliminar Amigo  => ", error)
+        console.log("Error al agregar Amigo  => ", error)
+        res.json("error")
+    }
+}
+
+exports.crearPublicacion = async (req, res) => {
+    try {        
+        const { Usuario,Texto,Imagen,Tags} = req.body
+
+        var string=Tags.split("**");
+
+        //Lista Amigos Que les envió solicitud de amistad
+        let sql = `insert into Publicacion (Fecha,Usuario, Texto, Imagen) 
+        values ((select current_date from dual),'${Usuario}','${Texto}', '${Imagen}')`;
+        let result = await BD.Open(sql, [], true);
+
+        for (let index = 0; index < string.length; index++) {
+            if(string[index]!=''){
+                sql=`call insertTags('${string[index]}')`;
+                result=await BD.Open(sql,[],true);
+            }
+            
+        }
+        console.log("Publicando!");
+        res.json("true");
+    }
+    catch (error) {
+        console.log("Error al agregar Amigo  => ", error)
         res.json("error")
     }
 }

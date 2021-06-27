@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
+import {TextFieldModule} from '@angular/cdk/text-field';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { UpdateUserComponent } from './components/update-user/update-user.compon
     MatExpansionModule,
     FormsModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    TextFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent],

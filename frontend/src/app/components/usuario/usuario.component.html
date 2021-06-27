@@ -48,7 +48,7 @@
             <mat-card-title>{{amigo.Usuario}}</mat-card-title>
           </mat-card-header>
           <mat-card-actions>
-            <button mat-button>Eliminar</button>
+            <button mat-button (click)="EliminarAmigo(amigo.Usuario)">Eliminar</button>
           </mat-card-actions>
 
         </mat-card>
@@ -93,7 +93,27 @@
                 Seccion para realizar Publicaciones
             </mat-panel-description>
         </mat-expansion-panel-header>
-        <h1>CONTENIDO</h1>
+
+
+        <form class="prueba">
+          <label >Texto</label>
+
+          <textarea matInput  class="txtA"
+            [(ngModel)]="txtPublicacion"
+            name="txtPublicacion"
+            placeholder="Ingrese texto aquí ..."
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5"></textarea>
+          <input [(ngModel)]="txtTag" placeholder="Agregar Tag" name="txtTag" class="form-control">
+          <button (click)="addTag()">Agregar Tag</button>
+          <label> Foto</label>
+          <input #fileInput type="file"  [(ngModel)]="ImagenP"   name="ImagenP" >
+          <button (click)="crearPublicacion()">Publicar</button>
+        </form>
+
+
       </mat-expansion-panel>
 
       <!--SECCIÓN DE PUBLICACIONES-->
