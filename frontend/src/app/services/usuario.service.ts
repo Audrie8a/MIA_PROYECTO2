@@ -15,6 +15,12 @@ export class UsuarioService {
     return this.httpClient.post(ruta,data).toPromise();
   }
 
+  getPublicacionesFiltradas(Usuario:string | null, Tag1: string){
+    const ruta = this.url+"Filtrar";
+    const data = {Usuario, Tag1};
+    return this.httpClient.post(ruta,data).toPromise();
+  }
+
   getAmigos (Usuario:string | null){
     const ruta = this.url+"Amigos";
     const data = {Usuario};

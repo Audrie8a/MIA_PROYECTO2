@@ -13,6 +13,7 @@ export class UsuarioComponent implements OnInit {
 
   @ViewChild('fileInput',{static:false}) fileInput!: ElementRef;
 
+  PF: string ="1";
   Usr: string | null="";
   Publicaciones: any;
   Amigos: any;
@@ -25,6 +26,9 @@ export class UsuarioComponent implements OnInit {
   ImagenP: string = '';
   lstTags=[''];
   Tags='';
+  //Filtrar
+  TagsF='';
+  txtTagF:string='';
 
   myImg="http://localhost:3000/";
 
@@ -96,6 +100,7 @@ export class UsuarioComponent implements OnInit {
       if(respuesta=="true"){
         this.onFileUpload();
         this.ngOnInit();
+        this.Tags='';
         alert("Publicado!");
       }else{
         alert("Error al Publicar!");
@@ -105,11 +110,26 @@ export class UsuarioComponent implements OnInit {
     }
   }
 
-  addTag(){
+  async FiltrarPublicacion(){
+    this.Publicaciones = await this.usuarioService.getPublicacionesFiltradas(this.Usr,this.TagsF);
+    this.ngOnInit();
+  }
+
+  addTag(condicion: string){
     if(this.txtTag!=''){
       if(this.txtTag[0]=='#'){
-        this.lstTags.push(this.txtTag);
+        if(condicion=="1"){
         this.Tags+=this.txtTag+"**";
+        }else{
+          let splitted=this.txtTag.split(" ");
+          splitted.forEach(element => {
+            if(element!=''){
+              this.TagsF+="'"+element+"'"+"**";
+            }
+          });
+          this.FiltrarPublicacion();
+
+        }
         alert("Tag Agregado!");
         this.txtTag="";
       }else{

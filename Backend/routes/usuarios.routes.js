@@ -11,5 +11,6 @@ router.post("/UpdateDatos",usuariosController.updateDatosUsuario);
 router.post("/Eliminar",usuariosController.eliminarAmigo);
 router.post("/Agregar",usuariosController.agregarAmigo);
 router.post("/Publicar",usuariosController.crearPublicacion);
+router.post("/Filtrar",usuariosController.getPublicacionesFiltradas);
 
 module.exports = router

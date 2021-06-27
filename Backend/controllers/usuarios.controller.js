@@ -349,3 +349,126 @@ exports.crearPublicacion = async (req, res) => {
         res.json("error")
     }
 }
+
+exports.getPublicacionesFiltradas = async (req, res) => {
+    try {
+        const { Usuario,Tag1} = req.body
+
+        //Lista Amigos Que les envió solicitud de amistad
+        let sql = `select solicitudamistad.usuariob
+        from SolicitudAmistad, Usuario
+        where SolicitudAmistad.usuarioa=usuario.usuario
+        and solicitudamistad.id_estadoamistad=1
+        and Usuario.usuario='${Usuario}'`;
+        //console.log(sql);
+        let result = await BD.Open(sql, [], true);
+        let ListaUsuarios=["'"+Usuario+"'"];
+        result.rows.map( user=>{
+            ListaUsuarios.push( "'"+user[0]+"'");
+        }
+        );
+        //Lista Amigos Que le enviaron solicitud de amistad
+        sql = `select solicitudamistad.usuarioa
+        from SolicitudAmistad, Usuario
+        where SolicitudAmistad.usuariob=usuario.usuario
+        and solicitudamistad.id_estadoamistad=1
+        and Usuario.usuario='${Usuario}'`;
+        result = await BD.Open(sql, [], true);
+        result.rows.map( user=>{
+           ListaUsuarios.push( "'"+user[0]+"'");
+        }
+        );
+
+        let Amigos ="";
+        for (let index = 0; index < ListaUsuarios.length; index++) {
+            if(index!=ListaUsuarios.length-1){
+                Amigos+=ListaUsuarios[index]+",";
+            }else{
+                Amigos+=ListaUsuarios[index];
+            }
+            
+        }
+
+        var stirng=Tag1.split("**");
+        let Tags="";
+        for (let index = 0; index < string.length; index++) {
+            if(string[index]!=''){
+                if(index!=string.length-1){
+                    Tags+="Lower("+string[index]+")"+",";
+                }else{
+                    Tags+="Lower("+string[index]+")";
+                }
+            }
+            
+        }
+
+        let publicacionSchema = {
+            "id_Publicacion":"",
+            "Fecha": "",
+            "Texto": "",
+            "Imagen": "",
+            "Usuario": "",
+            "Tags":""
+        }
+
+        sql = `select distinct Publicacion.id_Publicacion, Publicacion.Fecha,Publicacion.Texto, Publicacion.Imagen, Publicacion.Usuario
+        from Publicar, Publicacion, Tags
+        where publicar.id_tag=tags.id_tag
+        and Publicar.id_Publicacion=publicacion.id_publicacion
+        and Lower(tags.tags) in (${Tags})
+        and Publicacion.Usuario in (${Amigos})
+        order by publicacion.fecha desc`;
+        result = await BD.Open(sql, [], true);
+
+        let lstIdsPublicaciones=[];
+        result.rows.map(ids=>{
+            lstIdsPublicaciones.push(ids[0]);
+        })
+
+        let lstTags=[];
+        for (let index = 0; index < lstIdsPublicaciones.length; index++) {
+            sql=`select tags.tags
+            from Publicacion, Publicar, Tags
+            where Publicacion.id_Publicacion= publicar.id_publicacion
+            and tags.id_tag=publicar.id_tag
+            and publicacion.id_publicacion=${lstIdsPublicaciones[index]}`;
+            let result2 = await BD.Open(sql,[],true);
+            let Tags="";
+
+            result2.rows.map(tgs=>{
+                Tags+=tgs[0]+" ";
+            });
+
+            lstTags.push(Tags);
+        }
+        
+        let cont =0;
+        Publicaciones = result.rows.map(user => {
+            
+            publicacionSchema = {
+                "id_Publicacion": user[0],
+                "Fecha":user[1],
+                "Texto":user[2],
+                "Imagen":user[3],
+                "Usuario":user[4],
+                "Tags":lstTags[cont]
+            }
+            cont++;
+            return publicacionSchema
+        })
+
+        
+        if (publicacionSchema.Usuario != '') {
+
+            res.json(Publicaciones);
+            console.log("Obteniendo Publicaciones Usuario!");
+        } else {
+            console.log("No hay publicaciones que mostrar!");
+            res.json("false");
+        }
+    }
+    catch (error) {
+        console.log("Error al obtener Publicaciones  => ", error)
+        res.json("error")
+    }
+}
