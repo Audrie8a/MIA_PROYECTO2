@@ -1,10 +1,14 @@
 const BD = require('../BD/conexion');
+var crypto=require('crypto');
+
+
 
 //Ingresar
 exports.ingresar = async (req, res) => {
     try {
         const { Usuario, Passwords } = req.body
-        let sql = `select Usuario from Usuario where Usuario='${Usuario}' and Passwords='${Passwords}'`
+        let hash=crypto.createHash('md5').update(Passwords).digest('hex');
+        let sql = `select Usuario from Usuario where Usuario='${Usuario}' and Passwords='${hash}'`
         let result = await BD.Open(sql, [], true);
         let usuarioSchema = {
             "Usuario": ""
@@ -34,7 +38,9 @@ exports.ingresar = async (req, res) => {
 exports.addUsuario = async (req, res) => {
     try {
         const { Nombre, Usuario, Passwords, Foto } = req.body
-        let sql = `insert into Usuario (Nombre, Usuario, Passwords, Foto) values ('${Nombre}','${Usuario}','${Passwords}', '${Foto}')`;
+        let hash=crypto.createHash('md5').update(Passwords).digest('hex');
+        console.log(hash);
+        let sql = `insert into Usuario (Nombre, Usuario, Passwords, Foto,ModoBot) values ('${Nombre}','${Usuario}','${hash}', '${Foto}',0)`;
         await BD.Open(sql, [], true);
         console.log("Usuario creado exitosamente");
         res.json("true")

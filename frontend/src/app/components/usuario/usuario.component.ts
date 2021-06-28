@@ -3,11 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { MatDialog,MatDialogConfig,MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UpdateUserComponent } from '../update-user/update-user.component';
+import { Md5 } from 'ts-md5';
 
-export interface DialogData {
-  Nombre: string;
-  Passwords: string;
-}
 
 @Component({
   selector: 'app-usuario',
@@ -24,6 +21,7 @@ export class UsuarioComponent implements OnInit {
   Amigos: any;
   Sugerencias: any;
   DatosUsuario: any;
+  NombreBoton: string="Desactivado";
 
   //Publicacion
   txtTag:string ='';
@@ -43,7 +41,8 @@ export class UsuarioComponent implements OnInit {
   Nombre: string='';
   Passwords: string='';
   Foto:string='';
-
+  ModoBot:string='';
+  Contra:string='';
 
   constructor(public usuarioService:UsuarioService,
     public _routre:Router,
@@ -62,6 +61,7 @@ export class UsuarioComponent implements OnInit {
       this.getAmigos(usuario);
       this.getSugerencias(usuario);
       this.getDatosUsuario(usuario);
+
     }
   }
 
@@ -86,6 +86,12 @@ export class UsuarioComponent implements OnInit {
     this.myImg+=this.DatosUsuario.Foto;
     }else{
       this.myImg+="NoFoto.jpg";
+    }
+
+    if(this.DatosUsuario.ModoBot=="1"){
+      this.NombreBoton="Activado";
+    }else{
+      this.NombreBoton="Desactivado";
     }
   }
 
@@ -196,26 +202,57 @@ export class UsuarioComponent implements OnInit {
       console.log('The dialog was closed');
       this.Nombre=result.Nombre;
       this.Passwords=result.Passwords;
-      if(this.Nombre==''){
-        this.Nombre=this.DatosUsuario.Nombre;
-      }else if(this.Passwords==''){
-        this.Passwords=this.DatosUsuario.Passwords;
+      this.Contra=result.Contra;
+      if(this.Contra==undefined){
+        alert("Para Editar, se necesita que ingrese contraseña!");
+      }else{
+        if(this.Nombre==''){
+          this.Nombre=this.DatosUsuario.Nombre;
+        }
+        if(this.Passwords==''){
+          this.Passwords=this.DatosUsuario.Passwords;
+        }else if(this.Passwords!=''){
+          this.Passwords=Md5.hashStr(result.Passwords).toString();
+        }
+        let codificado=Md5.hashStr(this.Contra).toString();
+        if(codificado==this.DatosUsuario.Passwords){
+          this.EditarUsuario(this.Usr, this.Nombre, this.Passwords, this.DatosUsuario.Foto,this.DatosUsuario.ModoBot);
+        }else{
+          alert("Contraseña Incorrecta! Datos no modificados");
+        }
       }
-      this.EditarUsuario(this.Usr, this.Nombre, this.Passwords, this.DatosUsuario.Foto);
+      this.Nombre='';
+      this.Passwords='';
+      this.Contra='';
     })
   }
 
   cambiarFotoPerfil(){
     if(this.ImagenP!=''){
     this.onFileUpload();
-    this.EditarUsuario(this.Usr, this.DatosUsuario.Nombre, this.DatosUsuario.Passwords,this.ImagenP.substr(12,this.ImagenP.length));
+    this.EditarUsuario(this.Usr, this.DatosUsuario.Nombre, this.DatosUsuario.Passwords,this.ImagenP.substr(12,this.ImagenP.length),this.DatosUsuario.ModoBot);
     this.ngOnInit();
     }else{
       alert('No se ha cargado ninguna imagen!');
     }
   }
-  async EditarUsuario(Usuario: string | null, Nmb: string, Passw: string, Ft: string){
-    let respuesta = await this.usuarioService.updatUsuario(Usuario, Nmb, Passw, Ft);
+
+  cambiarModoBot(){
+    let Modo='';
+    if(this.DatosUsuario.ModoBot=="1"){
+      Modo="0";
+      this.NombreBoton="Desactivado";
+    }else{
+      Modo="1";
+      this.NombreBoton="Activado";
+    }
+    this.EditarUsuario(this.Usr, this.DatosUsuario.Nombre, this.DatosUsuario.Passwords,this.DatosUsuario.Foto,Modo);
+    this.ngOnInit();
+
+  }
+
+  async EditarUsuario(Usuario: string | null, Nmb: string, Passw: string, Ft: string,MB:string){
+    let respuesta = await this.usuarioService.updatUsuario(Usuario, Nmb, Passw, Ft,MB);
     if(respuesta=='true'){
       alert("Datos Usuario Editado!")
     }else{

@@ -1,5 +1,5 @@
 const BD = require('../BD/conexion');
-
+var crypto=require('crypto');
 
 //Obtener Publicaciones Usuario
 exports.getPublicaciones = async (req, res) => {
@@ -245,7 +245,8 @@ exports.getDatosUsuario = async (req, res) => {
             "Nombre":"",
             "Usuario":"",
             "Passwords":"",
-            "Foto":""
+            "Foto":"",
+            "ModoBot":""
         }
 
         
@@ -254,7 +255,8 @@ exports.getDatosUsuario = async (req, res) => {
                 "Nombre": user[1],
                 "Usuario":user[2],
                 "Passwords":user[3],
-                "Foto":user[4]
+                "Foto":user[4],
+                "ModoBot":user[5]
             }
         });
         
@@ -270,10 +272,9 @@ exports.getDatosUsuario = async (req, res) => {
 
 exports.updateDatosUsuario = async (req, res) => {
     try {        
-        const { Usuario,Nombre,Passwords,Foto} = req.body
-
+        const { Usuario,Nombre,Passwords,Foto,ModoBot} = req.body
         //Lista Amigos Que les envió solicitud de amistad
-        let sql = `update Usuario set Nombre='${Nombre}', Passwords='${Passwords}', Foto='${Foto}' 
+        let sql = `update Usuario set Nombre='${Nombre}', Passwords='${Passwords}', Foto='${Foto}' , ModoBot=${ModoBot}
         where Usuario='${Usuario}'`;
 
         let result = await BD.Open(sql, [], true);

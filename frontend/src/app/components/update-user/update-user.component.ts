@@ -4,6 +4,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 export interface DialogData {
   Nombre: string;
   Passwords: string;
+  Contra: string;
 }
 
 

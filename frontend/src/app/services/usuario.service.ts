@@ -60,9 +60,9 @@ export class UsuarioService {
     return this.httpClient.post(ruta,data).toPromise();
   }
 
-  updatUsuario(Usuario: string | null, Nombre:string, Passwords:string, Foto:string){
+  updatUsuario(Usuario: string | null, Nombre:string, Passwords:string, Foto:string,ModoBot:string){
     const ruta= this.url+"UpdateDatos";
-    const data={Usuario, Nombre, Passwords, Foto};
+    const data={Usuario, Nombre, Passwords, Foto,ModoBot};
     return this.httpClient.post(ruta,data).toPromise();
   }
 

@@ -11,7 +11,7 @@
           <th>Nombre</th>
           <th>Usuario</th>
           <th>Contraseña</th>
-
+          <th>Modo Bot</th>
       </thead>
       <tbody>
           <tr>
@@ -24,7 +24,9 @@
               <td>
                   {{DatosUsuario.Passwords}}
               </td>
-
+              <td>
+                <button (click)="cambiarModoBot()">{{NombreBoton}}</button>
+            </td>
               <td><button class="btn" (click)="openDialog()">Editar</button>
               </td>
           </tr>
