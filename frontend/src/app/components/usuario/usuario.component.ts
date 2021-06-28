@@ -4,6 +4,10 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { MatDialog,MatDialogConfig,MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UpdateUserComponent } from '../update-user/update-user.component';
 
+export interface DialogData {
+  Nombre: string;
+  Passwords: string;
+}
 
 @Component({
   selector: 'app-usuario',
@@ -31,12 +35,20 @@ export class UsuarioComponent implements OnInit {
   TagsF='';
   txtTagF:string='';
 
+  //Imagenes
+
   myImg="http://localhost:3000/";
+
+  //Editar
+  Nombre: string='';
+  Passwords: string='';
+  Foto:string='';
+
 
   constructor(public usuarioService:UsuarioService,
     public _routre:Router,
     public route: ActivatedRoute,
-    private dialog: MatDialog) { }
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     let usuario=this.route.snapshot.paramMap.get("id");
@@ -104,6 +116,7 @@ export class UsuarioComponent implements OnInit {
         this.onFileUpload();
         this.ngOnInit();
         this.Tags='';
+        this.ImagenP='';
         alert("Publicado!");
       }else{
         alert("Error al Publicar!");
@@ -174,17 +187,42 @@ export class UsuarioComponent implements OnInit {
   }
 
 
-  onEdit(){
-    const dialogConfig= new MatDialogConfig();
-    //dialogConfig.disableClose=true;
-    dialogConfig.autoFocus=true;
-    dialogConfig.width="60%";
-    this.dialog.open(UpdateUserComponent,dialogConfig);
-  }
-
   openDialog(): void {
-
+    const dialogRef=this.dialog.open(UpdateUserComponent,{
+      width:'300px',
+      data:{Nombre: this.Nombre, Passwords:this.Passwords}
+    });
+    dialogRef.afterClosed().subscribe(result=>{
+      console.log('The dialog was closed');
+      this.Nombre=result.Nombre;
+      this.Passwords=result.Passwords;
+      if(this.Nombre==''){
+        this.Nombre=this.DatosUsuario.Nombre;
+      }else if(this.Passwords==''){
+        this.Passwords=this.DatosUsuario.Passwords;
+      }
+      this.EditarUsuario(this.Usr, this.Nombre, this.Passwords, this.DatosUsuario.Foto);
+    })
   }
 
+  cambiarFotoPerfil(){
+    if(this.ImagenP!=''){
+    this.onFileUpload();
+    this.EditarUsuario(this.Usr, this.DatosUsuario.Nombre, this.DatosUsuario.Passwords,this.ImagenP.substr(12,this.ImagenP.length));
+    this.ngOnInit();
+    }else{
+      alert('No se ha cargado ninguna imagen!');
+    }
+  }
+  async EditarUsuario(Usuario: string | null, Nmb: string, Passw: string, Ft: string){
+    let respuesta = await this.usuarioService.updatUsuario(Usuario, Nmb, Passw, Ft);
+    if(respuesta=='true'){
+      alert("Datos Usuario Editado!")
+    }else{
+      alert("Error al editar!");
+    }
+    this.ngOnInit();
+  }
 
 }
+

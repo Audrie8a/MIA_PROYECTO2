@@ -1,1 +1,14 @@
-<p>update-user works!</p>
+<h1 mat-dialog-title>Hi {{data.Nombre}}</h1>
+<div mat-dialog-content>
+  <p>Edita tus datos</p>
+  <mat-form-field appearance="fill">
+    <label>Nombre</label>
+    <input  [(ngModel)]="data.Nombre" name="Nombre">
+    <label>Contraseña</label>
+    <input  [(ngModel)]="data.Passwords" name="Passwords">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>

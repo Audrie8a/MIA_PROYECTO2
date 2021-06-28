@@ -2,6 +2,10 @@
   <mat-tab label="Perfil">
 
     <img [src]="myImg" style="width: 350px; height: 350px; " >
+    <br>
+    <input #fileInput type="file"  [(ngModel)]="ImagenP"   name="ImagenP" >
+    <button (click)="cambiarFotoPerfil()">Cambiar Foto Perfil</button>
+    <br><br>
     <table id="acciones">
       <thead>
           <th>Nombre</th>
@@ -21,7 +25,7 @@
                   {{DatosUsuario.Passwords}}
               </td>
 
-              <td><button class="btn" (click)="onEdit()">Editar</button>
+              <td><button class="btn" (click)="openDialog()">Editar</button>
               </td>
           </tr>
       </tbody>

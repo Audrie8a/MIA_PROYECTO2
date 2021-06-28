@@ -273,7 +273,7 @@ exports.updateDatosUsuario = async (req, res) => {
         const { Usuario,Nombre,Passwords,Foto} = req.body
 
         //Lista Amigos Que les envió solicitud de amistad
-        let sql = `update Usuario set Nombre='${Nombre}', Passwords='${Passwords}.', Foto='${Foto}' 
+        let sql = `update Usuario set Nombre='${Nombre}', Passwords='${Passwords}', Foto='${Foto}' 
         where Usuario='${Usuario}'`;
 
         let result = await BD.Open(sql, [], true);

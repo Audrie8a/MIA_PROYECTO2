@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { FormGroup } from '@angular/forms';
+
 
 @Injectable({
   providedIn: 'root'
@@ -57,6 +57,12 @@ export class UsuarioService {
   crearPublicacion(Usuario: string | null, Texto:string, Imagen:string, Tags:string){
     const ruta= this.url+"Publicar";
     const data={Usuario, Texto, Imagen, Tags};
+    return this.httpClient.post(ruta,data).toPromise();
+  }
+
+  updatUsuario(Usuario: string | null, Nombre:string, Passwords:string, Foto:string){
+    const ruta= this.url+"UpdateDatos";
+    const data={Usuario, Nombre, Passwords, Foto};
     return this.httpClient.post(ruta,data).toPromise();
   }
 
