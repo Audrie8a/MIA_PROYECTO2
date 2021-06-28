@@ -1,8 +1,9 @@
 import { Component, OnInit,ElementRef,ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
-import { MatDialog,MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog,MatDialogConfig,MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UpdateUserComponent } from '../update-user/update-user.component';
+
 
 @Component({
   selector: 'app-usuario',
@@ -66,6 +67,7 @@ export class UsuarioComponent implements OnInit {
     this.Sugerencias= await this.usuarioService.getSugerencias(Usuario);
     //alert(this.Amigos);
   }
+
   async getDatosUsuario(Usuario: string | null){
     this.DatosUsuario= await this.usuarioService.getDatosUsuario(Usuario);
     if(this.DatosUsuario.Foto!=null){
@@ -84,6 +86,7 @@ export class UsuarioComponent implements OnInit {
       alert("Error al eliminar amigo!");
     }
   }
+
   async AgregarAmigo(Usuario: string){
     let respuesta = await this.usuarioService.agregarAmigo(this.Usr,Usuario);
     if(respuesta=="true"){
@@ -110,26 +113,46 @@ export class UsuarioComponent implements OnInit {
     }
   }
 
-  async FiltrarPublicacion(){
-    this.Publicaciones = await this.usuarioService.getPublicacionesFiltradas(this.Usr,this.TagsF);
+  borrarFiltros(){
     this.ngOnInit();
   }
 
-  addTag(condicion: string){
+  async FiltrarPublicacion(){
+
+    let respuesta=await this.usuarioService.getPublicacionesFiltradas(this.Usr,this.TagsF);
+    this.Publicaciones =respuesta;
+    this.TagsF='';
+    if(respuesta=='false'){
+      alert("No ha publicaciones con este tag!");
+    }
+    //this.ngOnInit();
+  }
+
+  addTagFiltro(){
+    if(this.txtTagF!=''){
+      if(this.txtTagF[0]=='#'){
+        let splitted=this.txtTagF.split(" ");
+        splitted.forEach(element => {
+          if(element!=''){
+            this.TagsF+="'"+element+"'"+"**";
+          }
+        });
+        this.FiltrarPublicacion();
+        alert("Filtrando...");
+        this.txtTagF="";
+      }else{
+        alert("Error, se necesita iniciar con un #");
+      }
+
+    }else{
+      alert('No se puede agregar un tag vacío!');
+    }
+  }
+
+  addTag(){
     if(this.txtTag!=''){
       if(this.txtTag[0]=='#'){
-        if(condicion=="1"){
         this.Tags+=this.txtTag+"**";
-        }else{
-          let splitted=this.txtTag.split(" ");
-          splitted.forEach(element => {
-            if(element!=''){
-              this.TagsF+="'"+element+"'"+"**";
-            }
-          });
-          this.FiltrarPublicacion();
-
-        }
         alert("Tag Agregado!");
         this.txtTag="";
       }else{
@@ -140,6 +163,7 @@ export class UsuarioComponent implements OnInit {
       alert('No se puede agregar un tag vacío!');
     }
   }
+
 
   onFileUpload(){
     const imageBlob = this.fileInput.nativeElement.files[0];
@@ -158,6 +182,9 @@ export class UsuarioComponent implements OnInit {
     this.dialog.open(UpdateUserComponent,dialogConfig);
   }
 
+  openDialog(): void {
+
+  }
 
 
 }

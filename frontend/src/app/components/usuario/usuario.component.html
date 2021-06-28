@@ -107,7 +107,7 @@
             cdkAutosizeMinRows="1"
             cdkAutosizeMaxRows="5"></textarea>
           <input [(ngModel)]="txtTag" placeholder="Agregar Tag" name="txtTag" class="form-control">
-          <button (click)="addTag('1')">Agregar Tag</button>
+          <button (click)="addTag()">Agregar Tag</button>
           <label> Foto</label>
           <input #fileInput type="file"  [(ngModel)]="ImagenP"   name="ImagenP" >
           <button (click)="crearPublicacion()">Publicar</button>
@@ -128,8 +128,9 @@
         </mat-expansion-panel-header>
 
 
-        <input [(ngModel)]="txtTag" name="txtTag"placeholder="Filtrar">
-        <button (click)="addTag('2')">Filtrar</button>
+        <input [(ngModel)]="txtTagF" name="txtTagF"placeholder="Filtrar">
+        <button (click)="addTagFiltro()">Filtrar</button>
+        <button (click)="borrarFiltros()">Borrar Filtros</button>
         <mat-card  *ngFor="let publi of Publicaciones">
           <mat-card-header>
             <mat-card-title>{{publi.Usuario}}</mat-card-title>

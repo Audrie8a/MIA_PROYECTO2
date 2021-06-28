@@ -389,11 +389,11 @@ exports.getPublicacionesFiltradas = async (req, res) => {
             
         }
 
-        var stirng=Tag1.split("**");
+        var string=Tag1.split("**");
         let Tags="";
-        for (let index = 0; index < string.length; index++) {
+        for (let index = 0; index < string.length-1; index++) {
             if(string[index]!=''){
-                if(index!=string.length-1){
+                if(index!=string.length-2){
                     Tags+="Lower("+string[index]+")"+",";
                 }else{
                     Tags+="Lower("+string[index]+")";
