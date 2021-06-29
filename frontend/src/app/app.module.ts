@@ -19,13 +19,15 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import {TextFieldModule} from '@angular/cdk/text-field';
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     UsuarioComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
