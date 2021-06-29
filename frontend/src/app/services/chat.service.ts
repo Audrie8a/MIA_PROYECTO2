@@ -6,5 +6,20 @@ import { SocketService } from './socket.service';
 })
 export class ChatService {
 
-  constructor(private socket:SocketService) { }
+  chats=[{text:"",messageType:0}];
+
+  constructor(private socket:SocketService) {
+    this.onReciveMessage();
+  }
+
+  sendMessage(messageInfo: any){
+    this.chats.push(messageInfo);
+    this.socket.io.emit("sendMessage",messageInfo);
+  }
+
+  onReciveMessage(){
+    this.socket.io.on("reciveMessage",(messageInfo)=>{
+      this.chats.push(messageInfo);
+    })
+  }
 }

@@ -12,9 +12,9 @@ export class SocketService {
   })
 
   constructor() {
-    this.io.emit("test",{texto:"Hola Mundo :p"});
-    this.io.on("test2",()=>{
-      alert("Test2");
-    })
+    //this.io.emit("test",{texto:"Hola Mundo :p"});
+    //this.io.on("test2",()=>{
+    //  alert("Test2");
+    //})
    }
 }

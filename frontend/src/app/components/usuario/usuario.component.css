@@ -1,123 +1,93 @@
-.login-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-}
-.example-full-width {
-  width: 100%;
-}
-
-
 .Todo{
-  background-color: #f3e9e9f5;
-  width: 100%;
-  height: 100%;
-  color: #ffffff;
+  background-color: #320d33;
 }
 
-.Todo mat-tab{
-  background: #eef7f3;
-  color: #eef7f3;
-}
-.example-small-box, .example-large-box, .example-large-box2 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 16px;
-  padding: 16px;
-  border-radius: 8px;
-  text-align: center;
-}
-
-.example-small-box {
-  height: 100px;
-  width: 100px;
-}
-
-.example-large-box {
-  height: 200px;
-  width: 300px;
-}
-
-.example-large-box2 {
-  height: 700px;
-  width: 300px;
-}
-
-
-.example-button-row {
-  display: table-cell;
-  width: 490px;
-}
-
-.example-button-row .mat-button-base {
-  margin: 40px 8px 8px 0;
-}
-
-
-.txtA{
-  font-family: "Roboto", sans-serif;
-  outline: 0;
-  background: #9285916c;
-  width: 100%;
-  border: 0;
-  margin: 0 0 15px;
-  padding: 15px;
-  box-sizing: border-box;
-  font-size: 14px;
-  color:#110909
-}
-
-.prueba input, .prueba select {
-  font-family: "Roboto", sans-serif;
-  outline: 0;
-  background: #9285916c;
-  width: 100%;
-  border: 0;
-  margin: 0 0 15px;
-  padding: 15px;
-  box-sizing: border-box;
-  font-size: 14px;
-  color:#110909
-}
-.prueba label{
-  font-family: "Roboto", sans-serif;
-  border: 0;
-  margin: 0 0 0px;
-  float: left;
-  color: #110909;
-}
-
-.prueba {
+.perfil  {
   position: relative;
   z-index: 1;
-  background: #a464ad28;
-  max-width: 360px;
+  background: linear-gradient(rgba(12, 1, 15, 0.123), rgba(95, 34, 112, 0.582));
+  max-width: auto;
   margin: 0 auto 100px;
-  padding: 45px;
+  padding: 20px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
-.prueba button {
-  font-family: "Roboto", sans-serif;
-  text-transform: uppercase;
-  outline: 0;
-  background: #571d58bb;
-  width: 100%;
-  border: 0;
-  padding: 15px;
-  color: #ffffff;
-  font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
+.perfil table{
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  max-width: auto;
+  margin: 0 auto 100px;
+  padding: 20px;
+}
+.perfil td, .perfil tr{
+  margin: 20mm;
+  padding: 5mm;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: medium;
+}
+.perfil img{
+  padding: 10px;
+  border:10px #320d33;
+  width: 350px;
+  height: 350px;
+  border-image-slice: 4.5 fill;
+}
+
+.custom-file-input {
+  color: transparent;
+}
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: 'Elegir Foto';
+  color: rgb(247, 239, 239);
+  display: inline-block;
+  background: -webkit-linear-gradient(top, #050008, #8a70a1);
+  border: 1px solid #999;
+  border-radius: 2px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
   cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 300;
+  font-size: 10pt;
+  width: 250px;
+  text-align: center;
+}
+.custom-file-input:hover::before {
+  border-color: black;
+}
+.custom-file-input:active {
+  outline: 0;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #5e488a, #030105);
 }
 
-.prueba button:hover,.prueba button:active,.form button:focus {
-  background: #320d33;
+
+
+
+.Botones {
+  text-shadow: 1px 1px rgb(138, 106, 153);
+  white-space: nowrap;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 10pt;
+  width: auto;
+  height: 30px;
+  text-align: center;
+  background: -webkit-linear-gradient(top, #4f1c6e, #501b5a41);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  color: rgb(5, 2, 2);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-mat-form-field {
-  margin-right: 12px;
-}
+

@@ -15,14 +15,19 @@ export class UsuarioComponent implements OnInit {
 
   @ViewChild('fileInput',{static:false}) fileInput!: ElementRef;
 
+  //Inicio
   PF: string ="1";
   Usr: string | null="";
   Publicaciones: any;
   Amigos: any;
   Sugerencias: any;
-  DatosUsuario: any;
+  DatosUsuario!: any;
   NombreBoton: string="Desactivado";
 
+  //Datos Usuario
+  Nom='';
+  Pass='';
+  Us='';
   //Publicacion
   txtTag:string ='';
   txtPublicacion: string = '';
@@ -35,7 +40,7 @@ export class UsuarioComponent implements OnInit {
 
   //Imagenes
 
-  myImg="http://localhost:3000/";
+  myImg="";
 
   //Editar
   Nombre: string='';
@@ -82,10 +87,13 @@ export class UsuarioComponent implements OnInit {
 
   async getDatosUsuario(Usuario: string | null){
     this.DatosUsuario= await this.usuarioService.getDatosUsuario(Usuario);
+    this.Us=this.DatosUsuario.Usuario;
+    this.Pass=this.DatosUsuario.Passwords;
+    this.Nom=this.DatosUsuario.Nombre;
     if(this.DatosUsuario.Foto!=null){
-    this.myImg+=this.DatosUsuario.Foto;
+    this.myImg="http://localhost:3000/"+this.DatosUsuario.Foto;
     }else{
-      this.myImg+="NoFoto.jpg";
+      this.myImg="http://localhost:3000/NoFoto.jpg";
     }
 
     if(this.DatosUsuario.ModoBot=="1"){

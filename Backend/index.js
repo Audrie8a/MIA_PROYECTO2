@@ -42,9 +42,10 @@ app.use(express.static('Public'));
 
 io.on('connection',(socket)=>{
   console.log("Nuevo Usuario Conectado!");
-  socket.on("test",(texto)=>{
-    console.log("evento TEST: "+texto.texto);
-    socket.emit("test2");
+  
+  socket.on("sendMessage",(messageInfo)=>{
+    console.log("Enviando un mensaje");
+    socket.emit("reciveMessage",messageInfo);
   })
 })
 

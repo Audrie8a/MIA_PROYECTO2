@@ -1,37 +1,39 @@
 <mat-tab-group mat-align-tabs="center" calss="Todo">
-  <mat-tab label="Perfil">
-
-    <img [src]="myImg" style="width: 350px; height: 350px; " >
-    <br>
-    <input #fileInput type="file"  [(ngModel)]="ImagenP"   name="ImagenP" >
-    <button (click)="cambiarFotoPerfil()">Cambiar Foto Perfil</button>
-    <br><br>
-    <table id="acciones">
-      <thead>
-          <th>Nombre</th>
-          <th>Usuario</th>
-          <th>Contraseña</th>
-          <th>Modo Bot</th>
-      </thead>
-      <tbody>
+  <mat-tab label="Perfil" >
+    <div class="perfil">
+      <img [src]="myImg"  >
+      <br>
+      <input #fileInput type="file"  [(ngModel)]="ImagenP"   name="ImagenP" class="custom-file-input" >
+      <button class="Botones" (click)="cambiarFotoPerfil()">Cambiar Foto Perfil</button>
+      <br><br>
+      <table id="acciones" clss="Tabla">
+        <thead>
+            <th>Nombre</th>
+            <th>Usuario</th>
+            <th>Contraseña</th>
+            <th>Modo Bot</th>
+        </thead>
+        <tbody>
           <tr>
-              <td>
-                  {{DatosUsuario.Nombre}}
-              </td>
-              <td>
-                  {{DatosUsuario.Usuario}}
-              </td>
-              <td>
-                  {{DatosUsuario.Passwords}}
-              </td>
-              <td>
-                <button (click)="cambiarModoBot()">{{NombreBoton}}</button>
+            <td>
+              {{Nom}}
             </td>
-              <td><button class="btn" (click)="openDialog()">Editar</button>
-              </td>
+            <td>
+              {{Us}}
+            </td>
+            <td>
+              {{Pass}}
+            </td>
+            <td>
+              <button class="Botones" (click)="cambiarModoBot()">{{NombreBoton}}</button>
+            </td>
+            <td><button class="btn" class="Botones" (click)="openDialog()">Editar</button>
+            </td>
           </tr>
-      </tbody>
-  </table>
+        </tbody>
+      </table>
+    </div>
+
 
 
   </mat-tab>

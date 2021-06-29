@@ -10,7 +10,5 @@ const io=require('socket.io')(http,{
 io.on('connection', (socket) => {
     console.log('Un usuario Conectado');
   
-    socket.on("test",()=>{
-      console.log("evento TEST");
-    })
+  
   });

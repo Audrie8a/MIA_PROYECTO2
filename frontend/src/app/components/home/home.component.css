@@ -9,7 +9,7 @@
 
 
   .Todo{
-    background-color: #f3e9e9f5;
+    background: linear-gradient(rgba(26, 7, 32, 0.781), rgba(79, 72, 87, 0.952));
     width: 100%;
     height: 100%;
     color: #ffffff;
@@ -58,14 +58,14 @@
   .prueba input, .prueba select {
     font-family: "Roboto", sans-serif;
     outline: 0;
-    background: #9285916c;
+    background: #2914276c;
     width: 100%;
     border: 0;
     margin: 0 0 15px;
     padding: 15px;
     box-sizing: border-box;
     font-size: 14px;
-    color:#110909
+    color:#f5eded
   }
   .prueba label{
     font-family: "Roboto", sans-serif;
@@ -103,4 +103,33 @@
 
   .prueba button:hover,.prueba button:active,.form button:focus {
     background: #320d33;
+  }
+
+
+  .custom-file-input::before {
+    content: 'Seleccionar Foto';
+    color: rgba(247, 239, 239, 0.452);
+    display: inline-block;
+    background: transparent;
+    border: transparent;
+    border-radius: 2px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 10pt;
+    width: 250px;
+  }
+
+  .custom-file-input {
+    color: transparent;
+  }
+  .custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+
+  .Todo mat-tab{
+    color: #eef7f3;
   }

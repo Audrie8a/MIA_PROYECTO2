@@ -1,13 +1,14 @@
 
 <mat-tab-group mat-align-tabs="center" class="Todo">
-    <mat-tab label="Ingresar"  >
+  <div>
+    <mat-tab label="Ingresar" class="Etiqueta" >
         <form class="prueba">
             <input [(ngModel)]="Usuario" name= "Usuario" placeholder="User" type="text" class="form-control">
             <input [(ngModel)]="Passwords" name= "Passwords" placeholder="Password" type="password" class="form-control">
             <button (click)="Login()" >Ingresar</button>
         </form>
     </mat-tab>
-
+  </div>
     <mat-tab label="Registrar" >
 
         <form class="prueba">
@@ -20,7 +21,7 @@
             <label> Repetir Contraseña</label>
             <input [(ngModel)]="Pass2" name= "Pass2" placeholder="Repetir Password" type="text" class="form-control">
             <label> Foto</label>
-            <input #fileInput type="file" [(ngModel)]="Foto"   name="Foto" >
+            <input #fileInput class="custom-file-input" type="file" [(ngModel)]="Foto"   name="Foto" >
 
             <button (click)='Registrar()'>Registrar</button>
         </form>

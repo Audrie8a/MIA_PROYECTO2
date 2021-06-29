@@ -8,9 +8,19 @@ import { ChatService } from 'src/app/services/chat.service';
 })
 export class ChatComponent implements OnInit {
 
-  constructor(private chat:ChatService) { }
+  text ="";
+  constructor(public chat:ChatService) { }
 
   ngOnInit(): void {
+  }
+
+  sendMessage(){
+    let messageInfo={
+      text: this.text,
+      messageType: 1
+    };
+    this.chat.sendMessage(messageInfo);
+    this.text="";
   }
 
 }
