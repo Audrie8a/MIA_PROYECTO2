@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  imgCovid="http://localhost:3000/covid_19.jpg"
   //Login
   Usuario: string = '';
   Passwords: string = '';

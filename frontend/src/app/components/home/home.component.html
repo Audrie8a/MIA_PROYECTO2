@@ -1,7 +1,11 @@
+<div class="ImgFondo" id="Fondo">
+  <img [src]="imgCovid">
+</div>
+
 
 <mat-tab-group mat-align-tabs="center" class="Todo">
-  <div>
-    <mat-tab label="Ingresar" class="Etiqueta" >
+  <div  class="Etiqueta">
+    <mat-tab label="Ingresar"  >
         <form class="prueba">
             <input [(ngModel)]="Usuario" name= "Usuario" placeholder="User" type="text" class="form-control">
             <input [(ngModel)]="Passwords" name= "Passwords" placeholder="Password" type="password" class="form-control">

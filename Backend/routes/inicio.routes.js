@@ -4,5 +4,5 @@ const router = express.Router();
 const usuariosController= require("../controllers/inicio.controller");
 
 router.post("/login",usuariosController.ingresar);
-router.post("/registro",usuariosController.addUsuario);
+router.post("/registro",usuariosController.Registro);
 module.exports = router

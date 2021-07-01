@@ -130,6 +130,19 @@
     visibility: hidden;
   }
 
-  .Todo mat-tab{
+  .Etiqueta mat-tab{
     color: #eef7f3;
   }
+
+  .ImgFondo {
+    height: 100px;
+    width: 150px;
+    filter:brightness(0.4);
+
+  }
+
+  .ImgFondo img{
+    height: 100px;
+    width: 200px;
+  }
+
