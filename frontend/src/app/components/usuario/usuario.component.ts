@@ -143,6 +143,7 @@ export class UsuarioComponent implements OnInit {
     }
     this.Tags='';
     this.ImagenP='';
+    this.txtPublicacion='';
   }
 
   borrarFiltros(){

@@ -1,13 +1,17 @@
 .Todo{
-  background-color: #320d33;
+  background: #320d33;
+  width: 100%;
+  height: 100%;
 }
-
+.FondoTotal{
+  background-color: #b38344;
+}
 .Fondo  {
   position: relative;
   z-index: 1;
   background: linear-gradient(rgba(12, 1, 15, 0.123), rgba(95, 34, 112, 0.582));
   max-width: auto;
-  margin: 0 auto 100px;
+  margin: 0 0;
   padding: 20px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -15,7 +19,7 @@
 .FondoPublicacion  {
   position: relative;
   z-index: 1;
-  background: linear-gradient(rgba(95, 34, 112, 0.582),rgba(12, 1, 15, 0.123));
+  background: linear-gradient(rgba(112, 34, 38, 0.582),rgba(12, 1, 15, 0.123));
   max-width: 500px;
   margin: 0 auto 100px;
   padding: 20px;
@@ -64,7 +68,7 @@
   content: 'Elegir Foto';
   color: rgb(247, 239, 239);
   display: inline-block;
-  background: -webkit-linear-gradient(top, #050008, #8a70a1);
+  background: -webkit-linear-gradient(top, #080002, #a1707b);
   border: 1px solid #999;
   border-radius: 2px;
   padding: 5px 8px;
@@ -85,7 +89,7 @@
   outline: 0;
 }
 .custom-file-input:active::before {
-  background: -webkit-linear-gradient(top, #5e488a, #030105);
+  background: -webkit-linear-gradient(top, #8a4856, #030105);
 }
 
 
@@ -100,7 +104,7 @@
   width: auto;
   height: 30px;
   text-align: center;
-  background: -webkit-linear-gradient(top, #4f1c6e, #501b5a41);
+  background: -webkit-linear-gradient(top, #8d3645, #501b5a41);
   border: 1px solid #999;
   border-radius: 3px;
   padding: 5px 8px;
@@ -113,14 +117,14 @@
 .Filtro{
   width: 1100px;
   height: 30px;
-  background-color: #320d33;
+  background-color: #581d25;
   color: aliceblue;
 }
 
 .FormPublicaciones{
     position: relative;
     z-index: 1;
-    background:linear-gradient(rgb(231, 203, 212),rgba(194, 117, 45, 0.096));
+    background:linear-gradient(rgb(231, 206, 203),rgba(194, 117, 45, 0.096));
     max-width: 800px;
     margin: 0 auto 100px;
     padding: 45px;
@@ -131,7 +135,7 @@
   }
 
   .FormPublicaciones textarea{
-    background-color: #2914276c;
+    background-color: #2914186c;
     margin: 10px;
     width: 700px;
     height: 90px;
@@ -150,7 +154,7 @@
   .FormPublicaciones input, .FormPublicaciones select{
     font-family: "Roboto", sans-serif;
     outline: 0;
-    background: #2914276c;
+    background: #2914186c;
     width: 600px;
     border: 0;
     margin: 0 0 15px;
@@ -192,7 +196,7 @@
     box-shadow: 0 0 15px #ddd;
   }
   .FondoAmigos{
-    background:linear-gradient(rgb(231, 203, 212),rgba(194, 117, 45, 0.096));
+    background:linear-gradient(rgb(231, 206, 203),rgba(194, 117, 45, 0.096));
     width: 600px;
     display: inline-block;
     margin: 20px;
