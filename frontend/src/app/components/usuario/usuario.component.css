@@ -42,9 +42,18 @@
   border:10px #320d33;
   width: 350px;
   height: 350px;
+  border-radius: 20px;
   border-image-slice: 4.5 fill;
 }
-
+.FotoPerfil{
+  padding: 10px;
+  border:10px #261027;
+  width: 350px;
+  height: 350px;
+  border-radius: 20px;
+  border-image-slice: 4.5 fill;
+  box-shadow: 0 0 18px rgb(20, 5, 5);
+}
 .custom-file-input {
   color: transparent;
 }
@@ -98,6 +107,129 @@
   outline: none;
   color: rgb(5, 2, 2);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 3px;
 }
 
+.Filtro{
+  width: 1100px;
+  height: 30px;
+  background-color: #320d33;
+  color: aliceblue;
+}
 
+.FormPublicaciones{
+    position: relative;
+    z-index: 1;
+    background:linear-gradient(rgb(231, 203, 212),rgba(194, 117, 45, 0.096));
+    max-width: 800px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    align-items:flex-start;
+    display: block;
+  }
+
+  .FormPublicaciones textarea{
+    background-color: #2914276c;
+    margin: 10px;
+    width: 700px;
+    height: 90px;
+    color: #f5eded;
+  }
+
+  .FormPublicaciones label{
+    font-family: "Roboto", sans-serif;
+    border: 0;
+    margin: 0 0 0px;
+    float: left;
+    color: #110909;
+  }
+
+  .FormPublicaciones input, .FormPublicaciones select{
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #2914276c;
+    width: 600px;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color:#f5eded
+  }
+
+  .custom-file-input2::before {
+    content: 'Seleccionar Foto';
+    color: rgba(51, 39, 39, 0.452);
+    background: transparent;
+    border: transparent;
+
+
+  }
+
+  .custom-file-input2 {
+    color: transparent;
+    width: 600px;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color:#f5eded;
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+  }
+  .custom-file-input2::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+
+  .Botones2{
+    background:linear-gradient(rgb(243, 208, 154),rgba(211, 128, 34, 0.171));
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #ddd;
+  }
+  .FondoAmigos{
+    background:linear-gradient(rgb(231, 203, 212),rgba(194, 117, 45, 0.096));
+    width: 600px;
+    display: inline-block;
+    margin: 20px;
+  }
+
+  .FondoSugerencias{
+    background:linear-gradient(rgb(221, 203, 231),rgba(194, 117, 45, 0.096));
+    width: 600px;
+    height: 90px;
+    margin: 20px;
+  }
+
+  .Botones3{
+    background:linear-gradient(rgb(215, 177, 226),rgba(211, 128, 34, 0.171));
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #ddd;
+  }
+
+
+  .Tabla{
+    width: auto;
+    margin: auto;
+    border:1px solid white;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 20px;
+    table-layout: fixed;
+    background: white;
+    opacity: 0.5;
+    color: black;
+    margin-top: 10px;
+  }
+  .Tabla th, .Tabla td{
+    text-align: center;
+    font-size: 20px;
+    table-layout: fixed;
+    color: black;
+    margin-top: 30px;
+    padding: 20px;
+  }
