@@ -105,7 +105,7 @@
         </mat-expansion-panel-header>
 
 
-        <form class="FormPublicaciones">
+        <div class="FormPublicaciones">
           <label >Texto</label>
 
           <textarea matInput  class="txtA"
@@ -121,9 +121,9 @@
           <input [(ngModel)]="txtTag" placeholder="Agregar Tag" name="txtTag" class="form-control">
           <button class="Botones" (click)="addTag()">Agregar Tag</button>
           <br>
-          <input #fileInput type="file"  class="custom-file-input2" [(ngModel)]="ImagenP"   name="ImagenP" >
+          <input #fileInput2 type="file"   [(ngModel)]="ImagenP"   name="ImagenP" class="custom-file-input2" >
           <button class="Botones" (click)="crearPublicacion()">Publicar</button>
-        </form>
+        </div>
 
 
       </mat-expansion-panel>

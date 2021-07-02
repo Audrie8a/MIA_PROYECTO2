@@ -82,7 +82,8 @@ export class HomeComponent implements OnInit {
   onFileUpload(){
     alert("Subiendo Imagen!");
     const imageBlob = this.fileInput.nativeElement.files[0];
-    alert(imageBlob);
+    //alert(imageBlob);
+    console.log(imageBlob);
     const file = new FormData();
     file.set('file', imageBlob);
     this.homeService.saveImagen(file);

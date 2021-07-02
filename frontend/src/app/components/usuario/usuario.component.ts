@@ -14,7 +14,7 @@ import { Md5 } from 'ts-md5';
 export class UsuarioComponent implements OnInit {
 
   @ViewChild('fileInput',{static:false}) fileInput!: ElementRef;
-
+  @ViewChild('fileInput2',{static:false}) fileInput2!: ElementRef;
   //Inicio
   PF: string ="1";
   Usr: string | null="";
@@ -125,12 +125,15 @@ export class UsuarioComponent implements OnInit {
 
   async crearPublicacion(){
     if(this.ImagenP!=''){
+      //alert(this.ImagenP);
+      if(this.Tags==''){
+        this.Tags='Ninguno'
+      }
       let respuesta=await this.usuarioService.crearPublicacion(this.Usr,this.txtPublicacion, this.ImagenP.substr(12,this.ImagenP.length),this.Tags );
       if(respuesta=="true"){
-        this.onFileUpload();
+        this.onFileUpload2();
         this.ngOnInit();
-        this.Tags='';
-        this.ImagenP='';
+
         alert("Publicado!");
       }else{
         alert("Error al Publicar!");
@@ -138,6 +141,8 @@ export class UsuarioComponent implements OnInit {
     }else{
       alert("Se necesita una imagen para publicar!");
     }
+    this.Tags='';
+    this.ImagenP='';
   }
 
   borrarFiltros(){
@@ -194,12 +199,21 @@ export class UsuarioComponent implements OnInit {
 
   onFileUpload(){
     const imageBlob = this.fileInput.nativeElement.files[0];
-    alert(imageBlob);
+    console.log(imageBlob);
+    //alert(imageBlob);
     const file = new FormData();
     file.set('file', imageBlob);
     this.usuarioService.saveImagen(file);
   }
 
+  onFileUpload2(){
+    const imageBlob = this.fileInput2.nativeElement.files[0];
+    console.log(imageBlob);
+    //alert(imageBlob);
+    const file = new FormData();
+    file.set('file', imageBlob);
+    this.usuarioService.saveImagen(file);
+  }
 
   openDialog(): void {
     const dialogRef=this.dialog.open(UpdateUserComponent,{
