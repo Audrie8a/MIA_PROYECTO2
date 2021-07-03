@@ -59,6 +59,7 @@ exports.getPublicaciones = async (req, res) => {
         order by publicacion.fecha desc`;
         result = await BD.Open(sql, [], true);
 
+        
         let lstIdsPublicaciones=[];
         result.rows.map(ids=>{
             lstIdsPublicaciones.push(ids[0]);
@@ -74,6 +75,7 @@ exports.getPublicaciones = async (req, res) => {
             let result2 = await BD.Open(sql,[],true);
             let Tags="";
 
+            
             result2.rows.map(tgs=>{
                 Tags+=tgs[0]+" ";
             });
@@ -142,7 +144,7 @@ exports.getAmigos = async (req, res) => {
            ListaUsuarios.push( user[0]);
         }
         );
-
+        
 
         let Amigos=[];
         let Amigo = {
@@ -213,7 +215,7 @@ exports.getSugerencias = async (req, res) => {
         let Amigo = {
             "Usuario":""
         }
-
+        
         
         result.rows.map( user=>{
             Amigo={
@@ -276,7 +278,7 @@ exports.updateDatosUsuario = async (req, res) => {
         //Lista Amigos Que les envió solicitud de amistad
         let sql = `update Usuario set Nombre='${Nombre}', Passwords='${Passwords}', Foto='${Foto}' , ModoBot=${ModoBot}
         where Usuario='${Usuario}'`;
-
+        
         let result = await BD.Open(sql, [], true);
 
         console.log("Datos Editados!");
@@ -297,7 +299,7 @@ exports.eliminarAmigo = async (req, res) => {
         or (solicitudamistad.usuariob='${Usuario}' and solicitudamistad.usuarioa='${Amigs}')`;
 
         let result = await BD.Open(sql, [], true);
-
+        
         console.log("Amigo Eliminado!");
         res.json("true");
     }
@@ -314,7 +316,7 @@ exports.agregarAmigo = async (req, res) => {
         //Lista Amigos Que les envió solicitud de amistad
         let sql = `insert into SolicitudAmistad (UsuarioA, UsuarioB, Fecha, id_EstadoAmistad) values('${UsuarioA}','${UsuarioB}',(select current_date from dual),1)`;
         let result = await BD.Open(sql, [], true);
-
+        
         console.log("Amigo Agregado!");
         res.json("true");
     }
@@ -425,7 +427,7 @@ exports.getPublicacionesFiltradas = async (req, res) => {
         result.rows.map(ids=>{
             lstIdsPublicaciones.push(ids[0]);
         })
-
+        
         let lstTags=[];
         for (let index = 0; index < lstIdsPublicaciones.length; index++) {
             sql=`select tags.tags

@@ -219,6 +219,7 @@ export class UsuarioComponent implements OnInit {
   openDialog(): void {
     const dialogRef=this.dialog.open(UpdateUserComponent,{
       width:'300px',
+      height: '450px',
       data:{Nombre: this.Nombre, Passwords:this.Passwords}
     });
     dialogRef.afterClosed().subscribe(result=>{

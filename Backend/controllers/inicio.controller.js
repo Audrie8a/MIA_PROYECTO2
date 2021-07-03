@@ -9,6 +9,7 @@ exports.ingresar = async (req, res) => {
         const { Usuario, Passwords } = req.body
         let hash=crypto.createHash('md5').update(Passwords).digest('hex');
         let sql = `select Usuario from Usuario where Usuario='${Usuario}' and Passwords='${hash}'`
+       
         let result = await BD.Open(sql, [], true);
         let usuarioSchema = {
             "Usuario": ""
@@ -89,6 +90,7 @@ exports.Registro = async (req, res) => {
         let hash=crypto.createHash('md5').update(Passwords).digest('hex');
         console.log(hash);
         let sql = `call Registro ('${Nombre}','${Usuario}','${hash}', '${Foto}')`;
+       
         await BD.Open(sql, [], true);
         console.log("Usuario creado exitosamente");
         res.json("true")

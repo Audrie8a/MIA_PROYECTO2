@@ -1,0 +1,25 @@
+.Fondo  {
+  background: linear-gradient(rgba(12, 1, 15, 0.123), rgba(95, 34, 112, 0.582));
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  align-content: center;
+}
+
+.Fondo input{
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #2914276c;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 5px;
+  box-sizing: border-box;
+  font-size: 14px;
+  color:#f5eded
+}
+.Botones2{
+  background:linear-gradient(rgb(137, 97, 153),rgba(211, 128, 34, 0.171));
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgb(24, 1, 1);
+  margin:22px
+}

@@ -1,3 +1,4 @@
+<div class="Fondo">
 <h1 mat-dialog-title>Hi {{data.Nombre}}</h1>
 <div mat-dialog-content>
   <p>Edita tus datos</p>
@@ -11,6 +12,7 @@
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+  <button mat-button class="Botones2" (click)="onNoClick()">No Thanks</button>
+  <button mat-button class="Botones2" [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>
 </div>

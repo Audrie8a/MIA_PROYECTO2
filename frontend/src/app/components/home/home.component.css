@@ -9,7 +9,7 @@
 
 
   .Todo{
-    background: linear-gradient(rgba(224, 204, 177, 0.781), rgba(124, 83, 89, 0.952));
+    background: linear-gradient(rgba(26, 7, 32, 0.781), rgba(79, 72, 87, 0.952));
     width: 100%;
     height: 100%;
     color: #ffffff;
@@ -58,7 +58,7 @@
   .prueba input, .prueba select {
     font-family: "Roboto", sans-serif;
     outline: 0;
-    background: #864d4d6c;
+    background: #2914276c;
     width: 100%;
     border: 0;
     margin: 0 0 15px;
@@ -90,7 +90,7 @@
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 0;
-    background: #581d22bb;
+    background: #571d58bb;
     width: 100%;
     border: 0;
     padding: 15px;
@@ -146,10 +146,3 @@
     width: 200px;
   }
 
-
-  .FondoTotal{
-    background-color: #a06a24;
-    height: 100%;
-    width: 100%;
-    margin:0 0;
-  }

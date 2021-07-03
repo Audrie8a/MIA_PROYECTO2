@@ -1,5 +1,5 @@
 
-<mat-tab-group mat-align-tabs="center" class="FondoTotal">
+<mat-tab-group mat-align-tabs="center" >
   <mat-tab label="Perfil"  >
     <div class="Fondo">
       <br>
@@ -76,7 +76,7 @@
             </mat-panel-description>
         </mat-expansion-panel-header>
 
-        <mat-card  *ngFor="let amigo of Sugerencias" class="FondoAmigos">
+        <mat-card  *ngFor="let amigo of Sugerencias" class="FondoSugerencias">
           <mat-card-header>
             <mat-card-title>{{amigo.Usuario}}</mat-card-title>
           </mat-card-header>
@@ -119,7 +119,7 @@
             cdkAutosizeMaxRows="5"></textarea>
           <br>
           <label> Tags</label>
-          <input [(ngModel)]="txtTag" placeholder="Agregar Tag" name="txtTag" class="form-control">
+          <input matInput [(ngModel)]="txtTag" placeholder="Agregar Tag" name="txtTag" class="form-control">
           <button class="Botones" (click)="addTag()">Agregar Tag</button>
           <br>
           <input #fileInput2 type="file"   [(ngModel)]="ImagenP"   name="ImagenP" class="custom-file-input2" >
@@ -141,7 +141,7 @@
         </mat-expansion-panel-header>
 
 
-        <input class="Filtro" [(ngModel)]="txtTagF" name="txtTagF"placeholder="Filtrar">
+        <input matInput class="Filtro" [(ngModel)]="txtTagF" name="txtTagF"placeholder="Filtrar">
         <button class="Botones" (click)="addTagFiltro()">Filtrar</button>
         <button  class="Botones" (click)="borrarFiltros()">Borrar Filtros</button>
         <br> <br> <br>
